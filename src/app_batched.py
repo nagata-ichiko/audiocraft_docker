@@ -93,11 +93,11 @@ with gr.Blocks() as demo:
         examples=[
             [
                 "An 80s driving pop song with heavy drums and synth pads in the background",
-                "./assets/bach.mp3",
+                "src/assets/bach.mp3",
             ],
             [
                 "A cheerful country song with acoustic guitars",
-                "./assets/bolero_ravel.mp3",
+                "src/assets/bolero_ravel.mp3",
             ],
             [
                 "90s rock song with electric guitar and heavy drums",
@@ -105,7 +105,7 @@ with gr.Blocks() as demo:
             ],
             [
                 "a light and cheerly EDM track, with syncopated drums, aery pads, and strong emotions bpm: 130",
-                "./assets/bach.mp3",
+                "src/assets/bach.mp3",
             ],
             [
                 "lofi slow bpm electro chill with organic samples",

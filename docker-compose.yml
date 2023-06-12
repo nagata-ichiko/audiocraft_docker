@@ -6,11 +6,11 @@ services:
       dockerfile: ./dockerfile
     container_name: "audiocraftContainer"
     expose:
-      - "8070"
+      - "7860"
     working_dir: "/root/"
     tty: true
     ports:
-      - "8070:8070"
+      - "7860:7860"
     volumes:
       - ./src:/root/src/
     # command: sh -c 'pip install --upgrade pip && pip install -r requirements.txt'

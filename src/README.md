@@ -1,4 +1,5 @@
 # Audiocraft
+
 ![docs badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_docs/badge.svg)
 ![linter badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_linter/badge.svg)
 ![tests badge](https://github.com/facebookresearch/audiocraft/workflows/audiocraft_tests/badge.svg)
@@ -24,6 +25,7 @@ Check out our [sample page][musicgen_samples] or test the available demo!
 We use 20K hours of licensed music to train MusicGen. Specifically, we rely on an internal dataset of 10K high-quality music tracks, and on the ShutterStock and Pond5 music data.
 
 ## Installation
+
 Audiocraft requires Python 3.9, PyTorch 2.0.0, and a GPU with at least 16 GB of memory (for the medium-sized model). To install Audiocraft, you can run the following:
 
 ```shell
@@ -37,16 +39,19 @@ pip install -e .  # or if you cloned the repo locally
 ```
 
 ## Usage
+
 We offer a number of way to interact with MusicGen:
+
 1. You can play with MusicGen by running the jupyter notebook at [`demo.ipynb`](./demo.ipynb) locally, or use the provided [colab notebook](https://colab.research.google.com/drive/1fxGqfg96RBUvGxZ1XXN07s3DthrKUl4-?usp=sharing).
 2. You can use the gradio demo locally by running `python app.py`.
-3. A demo is also available on the [`facebook/MusicGen`  HuggingFace Space](https://huggingface.co/spaces/facebook/MusicGen) (huge thanks to all the HF team for their support).
+3. A demo is also available on the [`facebook/MusicGen` HuggingFace Space](https://huggingface.co/spaces/facebook/MusicGen) (huge thanks to all the HF team for their support).
 4. Finally, you can run the [Gradio demo with a Colab GPU](https://colab.research.google.com/drive/1-Xe9NCdIs2sCUbiSmwHXozK6AAhMm7_i?usp=sharing),
-as adapted from [@camenduru Colab](https://github.com/camenduru/MusicGen-colab).
+   as adapted from [@camenduru Colab](https://github.com/camenduru/MusicGen-colab).
 
 ## API
 
 We provide a simple API and 4 pre-trained models. The pre trained models are:
+
 - `small`: 300M model, text to music only - [🤗 Hub](https://huggingface.co/facebook/musicgen-small)
 - `medium`: 1.5B model, text to music only - [🤗 Hub](https://huggingface.co/facebook/musicgen-medium)
 - `melody`: 1.5B model, text to music and text+melody to music - [🤗 Hub](https://huggingface.co/facebook/musicgen-melody)
@@ -58,6 +63,7 @@ GPUs will be able to generate short sequences, or longer sequences with the `sma
 
 **Note**: Please make sure to have [ffmpeg](https://ffmpeg.org/download.html) installed when using newer version of `torchaudio`.
 You can install it with:
+
 ```
 apt-get install ffmpeg
 ```
@@ -75,7 +81,7 @@ wav = model.generate_unconditional(4)    # generates 4 unconditional audio sampl
 descriptions = ['happy rock', 'energetic EDM', 'sad jazz']
 wav = model.generate(descriptions)  # generates 3 samples.
 
-melody, sr = torchaudio.load('./assets/bach.mp3')
+melody, sr = torchaudio.load('src/assets/bach.mp3')
 # generates using the melody from the given audio and the provided descriptions.
 wav = model.generate_with_chroma(descriptions, melody[None].expand(3, -1, -1), sr)
 
@@ -83,7 +89,6 @@ for idx, one_wav in enumerate(wav):
     # Will save under {idx}.wav, with loudness normalization at -14 db LUFS.
     audio_write(f'{idx}', one_wav.cpu(), model.sample_rate, strategy="loudness", loudness_compressor=True)
 ```
-
 
 ## Model Card
 
@@ -95,13 +100,12 @@ See [the model card page](./MODEL_CARD.md).
 
 Yes. We will soon release the training code for MusicGen and EnCodec.
 
-
 #### I need help on Windows
 
 @FurkanGozukara made a complete tutorial for [Audiocraft/MusicGen on Windows](https://youtu.be/v-YpvPkhdO4)
 
-
 ## Citation
+
 ```
 @article{copet2023simple,
       title={Simple and Controllable Music Generation},
@@ -112,8 +116,9 @@ Yes. We will soon release the training code for MusicGen and EnCodec.
 ```
 
 ## License
-* The code in this repository is released under the MIT license as found in the [LICENSE file](LICENSE).
-* The weights in this repository are released under the CC-BY-NC 4.0 license as found in the [LICENSE_weights file](LICENSE_weights).
+
+- The code in this repository is released under the MIT license as found in the [LICENSE file](LICENSE).
+- The weights in this repository are released under the CC-BY-NC 4.0 license as found in the [LICENSE_weights file](LICENSE_weights).
 
 [arxiv]: https://arxiv.org/abs/2306.05284
 [musicgen_samples]: https://ai.honu.io/papers/musicgen/

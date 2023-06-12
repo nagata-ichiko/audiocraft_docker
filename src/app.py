@@ -105,12 +105,12 @@ def ui(**kwargs):
             examples=[
                 [
                     "An 80s driving pop song with heavy drums and synth pads in the background",
-                    "./assets/bach.mp3",
+                    "src/assets/bach.mp3",
                     "melody"
                 ],
                 [
                     "A cheerful country song with acoustic guitars",
-                    "./assets/bolero_ravel.mp3",
+                    "src/assets/bolero_ravel.mp3",
                     "melody"
                 ],
                 [
@@ -120,7 +120,7 @@ def ui(**kwargs):
                 ],
                 [
                     "a light and cheerly EDM track, with syncopated drums, aery pads, and strong emotions",
-                    "./assets/bach.mp3",
+                    "src/assets/bach.mp3",
                     "melody"
                 ],
                 [
@@ -158,9 +158,9 @@ def ui(**kwargs):
         launch_kwargs = {}
         username = kwargs.get('username')
         password = kwargs.get('password')
-        server_port = kwargs.get('server_port', 0)
+        server_port = kwargs.get('server_port', 7860)
         inbrowser = kwargs.get('inbrowser', False)
-        share = kwargs.get('share', False)
+        share = kwargs.get('share', True)
         server_name = kwargs.get('listen')
 
         launch_kwargs['server_name'] = server_name
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--listen',
         type=str,
-        default='127.0.0.1',
+        default='127.0.0.0',
         help='IP to listen on for connections to Gradio',
     )
     parser.add_argument(
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--server_port',
         type=int,
-        default=0,
+        default=7860,
         help='Port to run the server listener on',
     )
     parser.add_argument(
